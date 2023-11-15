@@ -60,13 +60,13 @@ const userSlice = createSlice({
       .addCase(fetchAddress.pending, (state, action) => {
         state.status = "loading";
       })
-      .builder.addCase(fetchAddress.fulfilled, (state, action) => {
+      .addCase(fetchAddress.fulfilled, (state, action) => {
         state.status = "idle";
         state.position = action.payload.position;
         state.address = action.payload.address;
       })
-      .builder.addCase(fetchAddress.rejected, (state, action) => {
-        state.state = "error";
+      .addCase(fetchAddress.rejected, (state, action) => {
+        state.status = "error";
         state.error = action.error.message;
       });
   },
